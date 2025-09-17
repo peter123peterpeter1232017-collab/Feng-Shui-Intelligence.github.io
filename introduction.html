@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Feng Shui - Feng Shui Intelligence</title>
+    <meta name="description" content="Learn about feng shui principles and how our AI-powered analysis can help you create harmony in your living space.">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Three.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script>
+        // Fallback GLTFLoader implementation if CDN fails
+        if (typeof THREE !== 'undefined' && !THREE.GLTFLoader) {
+            console.log('GLTFLoader not found, creating fallback...');
+            // Simple fallback - we'll handle this in the model loading code
+        }
+    </script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="images/Feng Shui Intelligence (2).jpg" alt="Feng Shui Intelligence Logo">
+                <h1>Feng Shui Intelligence</h1>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="introduction.html" class="active">About Feng Shui</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Banner -->
+    <section class="page-banner">
+        <div class="container">
+            <h1>Understanding Feng Shui</h1>
+            <p>Ancient wisdom meets modern technology</p>
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section class="intro-section">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h2>What is Feng Shui?</h2>
+                    <p>Feng Shui (pronounced "fung shway") is an ancient Chinese practice that aims to harmonize individuals with their surrounding environment. The term literally translates to "wind" (feng) and "water" (shui), representing the flow of energy or "chi" through a space.</p>
+                    <p>Dating back over 3,000 years, Feng Shui is based on the Taoist understanding of nature and the belief that our living spaces reflect and affect our inner lives. By arranging our environments according to Feng Shui principles, we can create balance and harmony that supports our health, wealth, relationships, and overall well-being.</p>
+                </div>
+                <div class="col">
+                    <div class="image-container animate-on-scroll">
+                        <div class="feng-shui-concept">
+                            <img src="images/Luo-pan-lupan-Chinese-feng-shui-compass.webp" alt="Traditional Chinese Feng Shui Compass (Luo Pan)" class="luo-pan-image" onerror="this.src='images/feng-shui-master-logo.jpg.jpeg'; this.style.borderRadius='50%';">
+                            <p class="concept-description">Based on traditional Feng Shui principles using the ancient Chinese compass (Luo Pan)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Principles Section -->
+    <section class="principles-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Core Principles of Feng Shui</h2>
+                <p>Understanding the fundamental concepts that guide this ancient practice</p>
+            </div>
+            <div class="principles-grid">
+                <div class="principle-card animate-on-scroll" data-element="yin-yang">
+                    <div class="principle-icon">
+                        <i class="fas fa-yin-yang"></i>
+                    </div>
+                    <h3>Yin and Yang</h3>
+                    <p>The balance of opposing yet complementary forces. In Feng Shui, spaces should have a harmonious balance of yin (passive, dark, soft) and yang (active, bright, hard) elements.</p>
+                    <div class="element-particles"></div>
+                </div>
+                <div class="principle-card animate-on-scroll" data-element="chi">
+                    <div class="principle-icon">
+                        <i class="fas fa-water"></i>
+                    </div>
+                    <h3>Chi (Energy Flow)</h3>
+                    <p>The vital life force that flows through everything. Good Feng Shui creates spaces where chi can flow smoothly without stagnating or rushing too quickly.</p>
+                    <div class="element-particles"></div>
+                </div>
+                <div class="principle-card animate-on-scroll" data-element="five-elements">
+                    <div class="principle-icon">
+                        <i class="fas fa-fire"></i>
+                        <div class="element-symbols">
+                            <span class="wood">🌳</span>
+                            <span class="fire">🔥</span>
+                            <span class="earth">🌍</span>
+                            <span class="metal">⚡</span>
+                            <span class="water">💧</span>
+                        </div>
+                    </div>
+                    <h3>Five Elements</h3>
+                    <p>Wood, Fire, Earth, Metal, and Water represent different types of energy. Balancing these elements in your space creates harmony and supports different aspects of life.</p>
+                    <div class="element-particles"></div>
+                </div>
+                <div class="principle-card animate-on-scroll">
+                    <div class="principle-icon">
+                        <i class="fas fa-compass"></i>
+                    </div>
+                    <h3>Bagua Map</h3>
+                    <p>An energy map that divides spaces into nine areas, each corresponding to different life aspects such as wealth, family, knowledge, career, and relationships.</p>
+                </div>
+                <div class="principle-card animate-on-scroll">
+                    <div class="principle-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <h3>Command Position</h3>
+                    <p>Placing important furniture (bed, desk, stove) in positions of power and security, typically diagonally from the door with a solid wall behind for support.</p>
+                </div>
+                <div class="principle-card animate-on-scroll">
+                    <div class="principle-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3>Balance and Harmony</h3>
+                    <p>Creating environments that feel balanced in terms of color, texture, light, space, and sound to promote overall well-being and positive energy.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI-Powered Approach Section -->
+    <section class="ai-approach" id="ai-approach">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="gradient-text">Our AI-Powered Approach</h2>
+                <p class="subtitle">How we blend ancient wisdom with cutting-edge technology</p>
+            </div>
+            
+            <div class="ai-analysis-showcase">
+                <div class="analysis-visual">
+                    <div id="eve-model-container" class="eve-3d-model">
+                        <!-- EVE 3D Model will be rendered here -->
+                    </div>
+                </div>
+                
+                <div class="analysis-content">
+                    <h3>Modern Technology Meets Traditional Wisdom</h3>
+                    <p>At Feng Shui Intelligence, we've developed a proprietary AI system that analyzes interior spaces based on traditional Feng Shui principles. Our technology can identify:</p>
+                    
+                    <div class="analysis-features">
+                        <div class="feature-item" data-aos="fade-up" data-aos-delay="100">
+                            <i class="fas fa-couch"></i>
+                            <span>Furniture placement and orientation</span>
+                        </div>
+                        <div class="feature-item" data-aos="fade-up" data-aos-delay="200">
+                            <i class="fas fa-palette"></i>
+                            <span>Color balance and harmony</span>
+                        </div>
+                        <div class="feature-item" data-aos="fade-up" data-aos-delay="300">
+                            <i class="fas fa-wind"></i>
+                            <span>Energy flow patterns and blockages</span>
+                        </div>
+                        <div class="feature-item" data-aos="fade-up" data-aos-delay="400">
+                            <i class="fas fa-yin-yang"></i>
+                            <span>Element distribution (Wood, Fire, Earth, Metal, Water)</span>
+                        </div>
+                        <div class="feature-item" data-aos="fade-up" data-aos-delay="500">
+                            <i class="fas fa-compass"></i>
+                            <span>Bagua alignment with life aspects</span>
+                        </div>
+                        <div class="feature-item" data-aos="fade-up" data-aos-delay="600">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Potential sources of negative energy</span>
+                        </div>
+                    </div>
+                    
+                    <div class="ai-validation">
+                        <p><strong>Our AI has been trained on thousands of interior spaces and validated by certified Feng Shui masters to ensure accuracy and authenticity in our recommendations.</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Benefits of Feng Shui</h2>
+                <p>How optimizing your space can improve different aspects of your life</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card animate-on-scroll">
+                    <div class="benefit-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Health & Wellbeing</h3>
+                    <p>Proper Feng Shui can reduce stress, improve sleep quality, and create a sense of calm and balance that supports overall health.</p>
+                </div>
+                <div class="benefit-card animate-on-scroll">
+                    <div class="benefit-icon">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <h3>Prosperity & Abundance</h3>
+                    <p>Enhancing your wealth corner and creating good energy flow can attract financial opportunities and abundance.</p>
+                </div>
+                <div class="benefit-card animate-on-scroll">
+                    <div class="benefit-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Relationships</h3>
+                    <p>Balancing energies in your home can improve family harmony and create space for nurturing healthy relationships.</p>
+                </div>
+                <div class="benefit-card animate-on-scroll">
+                    <div class="benefit-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>Career & Purpose</h3>
+                    <p>Optimizing your workspace can enhance focus, creativity, and professional growth opportunities.</p>
+                </div>
+                <div class="benefit-card animate-on-scroll">
+                    <div class="benefit-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Mental Clarity</h3>
+                    <p>Reducing clutter and creating balanced spaces helps clear mental fog and improve decision-making.</p>
+                </div>
+                <div class="benefit-card animate-on-scroll">
+                    <div class="benefit-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>Harmony & Peace</h3>
+                    <p>A well-balanced home creates a sanctuary that feels peaceful, supportive, and nurturing for all who live there.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Call to Action -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Transform Your Space?</h2>
+            <p>Upload your photos and discover how Feng Shui can improve your home and life.</p>
+            <div class="cta-buttons">
+                <a href="pricing.html" class="btn btn-primary">View Pricing Plans</a>
+                <a href="index.html#upload" class="btn btn-secondary">Try Demo Analysis</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Feng Shui Intelligence</h3>
+                    <p>Transforming spaces with AI-powered feng shui analysis for harmony and well-being.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="introduction.html">About Feng Shui</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Harmony Street, Suite 101</li>
+                        <li><i class="fas fa-phone"></i> (555) 123-4567</li>
+                        <li><i class="fas fa-envelope"></i> info@fengshui-ai.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Feng Shui Intelligence. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+    <script>
+        // EVE 3D Model Loader
+        let scene, camera, renderer, eveModel;
+        
+        function initEVEModel() {
+            console.log('initEVEModel called');
+            const container = document.getElementById('eve-model-container');
+            if (!container) {
+                console.error('EVE model container not found!');
+                return;
+            }
+            console.log('Container found:', container);
+            
+            // Check if Three.js is available
+            if (typeof THREE === 'undefined') {
+                console.error('THREE.js is not loaded!');
+                showModelPlaceholder();
+                return;
+            }
+            
+            if (typeof THREE.GLTFLoader === 'undefined') {
+                console.error('GLTFLoader is not available!');
+                showModelPlaceholder();
+                return;
+            }
+            
+            // Create scene
+            scene = new THREE.Scene();
+            
+            // Create camera
+            camera = new THREE.PerspectiveCamera(75, container.offsetWidth / container.offsetHeight, 0.1, 1000);
+            camera.position.set(0, 2.2, 5);
+            
+            // Add camera tilt to look down at the model
+            camera.lookAt(0, 0, 0); // Look at the center of the scene
+            camera.rotation.x = -0.2; // Tilt camera down slightly (in radians)
+            
+            // Create renderer
+            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            renderer.setSize(640, 360); // 360p resolution
+            renderer.setPixelRatio(window.devicePixelRatio);
+            renderer.setClearColor(0x000000, 0); // Transparent background
+            renderer.shadowMap.enabled = true;
+            renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+            container.appendChild(renderer.domElement);
+            
+            // Add enhanced lighting
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.8); // Increased ambient light
+            scene.add(ambientLight);
+            
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 1.0); // Increased intensity
+            directionalLight.position.set(5, 5, 5);
+            directionalLight.castShadow = true;
+            scene.add(directionalLight);
+            
+            // Add additional directional light from the front
+            const frontLight = new THREE.DirectionalLight(0xffffff, 0.6);
+            frontLight.position.set(0, 3, 8);
+            scene.add(frontLight);
+            
+            // Add fill light from the side
+            const sideLight = new THREE.DirectionalLight(0xffffff, 0.4);
+            sideLight.position.set(-8, 2, 3);
+            scene.add(sideLight);
+            
+            const pointLight = new THREE.PointLight(0x00bcd4, 0.5, 100);
+            pointLight.position.set(-5, 3, 2);
+            scene.add(pointLight);
+            
+            // Load EVE model
+            const loader = new THREE.GLTFLoader();
+            loader.load(
+                'eve_stellar_blade_5.glb',
+                function(gltf) {
+                    eveModel = gltf.scene;
+                    
+                    // Scale and position the model
+                    eveModel.scale.set(1.5, 1.5, 1.5);
+                    eveModel.position.set(0, -1.8, 0);
+                    
+                    // Enable shadows and adjust materials
+                    eveModel.traverse(function(child) {
+                        if (child.isMesh) {
+                            child.castShadow = true;
+                            child.receiveShadow = true;
+                            
+                            // Make skin materials whiter
+                            if (child.material) {
+                                if (Array.isArray(child.material)) {
+                                    child.material.forEach(function(mat) {
+                                        // Log all material names for debugging
+                                        if (mat.name) {
+                                            console.log('Material name:', mat.name, 'Color:', mat.color);
+                                        }
+                                        if (mat.name && (mat.name.toLowerCase().includes('skin') || mat.name.toLowerCase().includes('face') || mat.name.toLowerCase().includes('body') || mat.name.toLowerCase().includes('head') || mat.name.toLowerCase().includes('arm') || mat.name.toLowerCase().includes('leg') || mat.name.toLowerCase().includes('dark') || mat.name.toLowerCase().includes('shadow') || mat.name.toLowerCase().includes('tan'))) {
+                                            mat.color.setRGB(1.0, 1.0, 0.98); // Ultra light skin tone
+                                        }
+                                    });
+                                } else {
+                                    // Log material name for debugging
+                                    if (child.material.name) {
+                                        console.log('Single material name:', child.material.name, 'Color:', child.material.color);
+                                    }
+                                    if (child.material.name && (child.material.name.toLowerCase().includes('skin') || child.material.name.toLowerCase().includes('face') || child.material.name.toLowerCase().includes('body') || child.material.name.toLowerCase().includes('head') || child.material.name.toLowerCase().includes('arm') || child.material.name.toLowerCase().includes('leg') || child.material.name.toLowerCase().includes('dark') || child.material.name.toLowerCase().includes('shadow') || child.material.name.toLowerCase().includes('tan'))) {
+                                        child.material.color.setRGB(1.0, 1.0, 0.98); // Ultra light skin tone
+                                    }
+                                }
+                            }
+                        }
+                    });
+                    
+                    scene.add(eveModel);
+                    
+                    // Start animation
+                    animate();
+                },
+                function(progress) {
+                    console.log('Loading progress:', (progress.loaded / progress.total * 100) + '%');
+                },
+                function(error) {
+                    console.error('Error loading EVE model:', error);
+                    // Fallback: show a placeholder
+                    showModelPlaceholder();
+                }
+            );
+            
+            // Handle window resize
+            window.addEventListener('resize', onWindowResize, false);
+        }
+        
+        function showModelPlaceholder() {
+            const container = document.getElementById('eve-model-container');
+            container.innerHTML = '<div class="model-placeholder"><i class="fas fa-cube"></i><p>3D Model Loading...</p></div>';
+        }
+        
+        function animate() {
+            requestAnimationFrame(animate);
+            
+            // Rotate the model slowly
+            if (eveModel) {
+                eveModel.rotation.y += 0.005;
+            }
+            
+            renderer.render(scene, camera);
+        }
+        
+        function onWindowResize() {
+            const container = document.getElementById('eve-model-container');
+            if (!container) return;
+            
+            camera.aspect = 640 / 360; // 360p aspect ratio
+            camera.updateProjectionMatrix();
+            renderer.setSize(640, 360); // 360p resolution
+        }
+        
+        // Debug function to check Three.js availability
+        function checkThreeJS() {
+            console.log('THREE available:', typeof THREE !== 'undefined');
+            console.log('GLTFLoader available:', typeof THREE.GLTFLoader !== 'undefined');
+            console.log('Container exists:', document.getElementById('eve-model-container') !== null);
+        }
+        
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, checking Three.js...');
+            checkThreeJS();
+            setTimeout(function() {
+                console.log('Initializing EVE model...');
+                initEVEModel();
+            }, 1000); // Increased delay to ensure all scripts load
+        });
+    </script>
+
+    <!-- AOS Animation Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            offset: 100
+        });
+    </script>
+
+    <!-- AI Chat Box -->
+    <div class="ai-chat-container">
+        <!-- Chat Toggle Button -->
+        <button class="chat-toggle-btn" id="chatToggleBtn">
+            <img src="images/OLDMAN.png" alt="Feng Shui AI Master" class="chat-master-icon">
+        </button>
+        
+        <!-- Chat Window -->
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <div class="chat-title">
+                    <img src="images/e-challenge.png.png" alt="Feng Shui Master" class="chat-header-icon">
+                    <span>Feng Shui Master</span>
+                </div>
+                <button class="chat-close-btn" id="chatCloseBtn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="chat-messages" id="chatMessages">
+                <div class="message ai-message">
+                    <div class="message-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="message-content">
+                        <p>Hello! I'm your Feng Shui AI assistant. How can I help you create harmony in your space today?</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chat-input-container">
+                <input type="text" class="chat-input" id="chatInput" placeholder="Ask about feng shui principles...">
+                <button class="chat-send-btn" id="chatSendBtn">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

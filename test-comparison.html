@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header Size Comparison Test</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        .comparison-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .page-frame {
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .page-label {
+            background: #f0f0f0;
+            padding: 10px;
+            font-weight: bold;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .size-info {
+            font-size: 12px;
+            color: #666;
+        }
+        iframe {
+            width: 100%;
+            height: 300px;
+            border: none;
+            transform-origin: top left;
+        }
+        .scale-controls {
+            padding: 10px;
+            background: #f9f9f9;
+            text-align: center;
+        }
+        .scale-btn {
+            margin: 0 5px;
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            background: white;
+            cursor: pointer;
+        }
+        .scale-btn.active {
+            background: #007cba;
+            color: white;
+        }
+        @media (min-width: 1200px) {
+            .comparison-container {
+                flex-direction: row;
+            }
+            .page-frame {
+                flex: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Header Size Comparison Test</h1>
+    <p>如果pricing和contact页面看起来被放大了，这个测试页面可以帮助我们识别问题。</p>
+    
+    <div class="scale-controls">
+        <span>缩放比例: </span>
+        <button class="scale-btn" onclick="setScale(0.5)">50%</button>
+        <button class="scale-btn" onclick="setScale(0.75)">75%</button>
+        <button class="scale-btn active" onclick="setScale(1)">100%</button>
+        <button class="scale-btn" onclick="setScale(1.25)">125%</button>
+    </div>
+    
+    <div class="comparison-container">
+        <div class="page-frame">
+            <div class="page-label">
+                <span>Introduction Page (基准)</span>
+                <span class="size-info" id="intro-size">Loading...</span>
+            </div>
+            <iframe src="introduction.html" id="intro-frame"></iframe>
+        </div>
+        <div class="page-frame">
+            <div class="page-label">
+                <span>Pricing Page</span>
+                <span class="size-info" id="pricing-size">Loading...</span>
+            </div>
+            <iframe src="pricing.html" id="pricing-frame"></iframe>
+        </div>
+        <div class="page-frame">
+            <div class="page-label">
+                <span>Contact Page</span>
+                <span class="size-info" id="contact-size">Loading...</span>
+            </div>
+            <iframe src="contact.html" id="contact-frame"></iframe>
+        </div>
+    </div>
+    
+    <script>
+        function setScale(scale) {
+            const iframes = document.querySelectorAll('iframe');
+            iframes.forEach(iframe => {
+                iframe.style.transform = `scale(${scale})`;
+                iframe.style.height = `${300 / scale}px`;
+            });
+            
+            // Update active button
+            document.querySelectorAll('.scale-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+        
+        // Monitor iframe content for size information
+        window.addEventListener('load', function() {
+            const frames = {
+                'intro-frame': 'intro-size',
+                'pricing-frame': 'pricing-size', 
+                'contact-frame': 'contact-size'
+            };
+            
+            Object.keys(frames).forEach(frameId => {
+                const iframe = document.getElementById(frameId);
+                const sizeElement = document.getElementById(frames[frameId]);
+                
+                iframe.addEventListener('load', function() {
+                    try {
+                        const doc = iframe.contentDocument || iframe.contentWindow.document;
+                        const header = doc.querySelector('header');
+                        if (header) {
+                            const rect = header.getBoundingClientRect();
+                            sizeElement.textContent = `${Math.round(rect.width)}×${Math.round(rect.height)}px`;
+                        }
+                    } catch (e) {
+                        sizeElement.textContent = 'Cross-origin';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

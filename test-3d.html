@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Model Test</title>
+    <style>
+        body { margin: 0; padding: 20px; font-family: Arial, sans-serif; }
+        #model-container { 
+            width: 600px; 
+            height: 400px; 
+            border: 2px solid #ccc; 
+            margin: 20px 0;
+            background: #f0f0f0;
+        }
+        .status { 
+            padding: 10px; 
+            margin: 10px 0; 
+            border-radius: 5px;
+        }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+        .info { background: #d1ecf1; color: #0c5460; }
+    </style>
+</head>
+<body>
+    <h1>EVE 3D Model Loading Test</h1>
+    <div id="status"></div>
+    <div id="model-container"></div>
+    
+    <!-- Three.js Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    
+    <script>
+        const statusDiv = document.getElementById('status');
+        
+        function addStatus(message, type = 'info') {
+            const div = document.createElement('div');
+            div.className = `status ${type}`;
+            div.textContent = message;
+            statusDiv.appendChild(div);
+            console.log(message);
+        }
+        
+        function testModel() {
+            addStatus('Starting 3D model test...');
+            
+            // Check Three.js
+            if (typeof THREE === 'undefined') {
+                addStatus('ERROR: THREE.js not loaded!', 'error');
+                return;
+            }
+            addStatus('✓ THREE.js loaded successfully', 'success');
+            
+            // Check GLTFLoader
+            if (typeof THREE.GLTFLoader === 'undefined') {
+                addStatus('ERROR: GLTFLoader not available!', 'error');
+                return;
+            }
+            addStatus('✓ GLTFLoader available', 'success');
+            
+            const container = document.getElementById('model-container');
+            
+            // Create scene
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, 640 / 360, 0.1, 1000); // 360p aspect ratio
+            const renderer = new THREE.WebGLRenderer({ antialias: true });
+            
+            renderer.setSize(640, 360); // 360p resolution
+            renderer.setPixelRatio(window.devicePixelRatio);
+            renderer.setClearColor(0x222222);
+            container.appendChild(renderer.domElement);
+            
+            // Add enhanced lighting
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.8); // Increased ambient light
+            scene.add(ambientLight);
+            
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 1.0); // Increased intensity
+            directionalLight.position.set(5, 5, 5);
+            scene.add(directionalLight);
+            
+            // Add additional directional light from the front
+            const frontLight = new THREE.DirectionalLight(0xffffff, 0.6);
+            frontLight.position.set(0, 3, 8);
+            scene.add(frontLight);
+            
+            // Add fill light from the side
+            const sideLight = new THREE.DirectionalLight(0xffffff, 0.4);
+            sideLight.position.set(-8, 2, 3);
+            scene.add(sideLight);
+            
+            camera.position.set(0, 2.2, 5);
+            
+            // Add camera tilt to look down at the model
+            camera.lookAt(0, 0, 0); // Look at the center of the scene
+            camera.rotation.x = -0.2; // Tilt camera down slightly (in radians)
+            
+            // Load model
+            const loader = new THREE.GLTFLoader();
+            addStatus('Loading EVE model...');
+            
+            loader.load(
+                'eve_stellar_blade_5.glb',
+                function(gltf) {
+                    addStatus('✓ Model loaded successfully!', 'success');
+                    const model = gltf.scene;
+                    model.scale.set(1.5, 1.5, 1.5);
+                    model.position.set(0, -1.8, 0);
+                    
+                    // Adjust materials for whiter skin
+                    model.traverse(function(child) {
+                        if (child.isMesh && child.material) {
+                            if (Array.isArray(child.material)) {
+                                child.material.forEach(function(mat) {
+                                    if (mat.name && (mat.name.toLowerCase().includes('skin') || mat.name.toLowerCase().includes('face') || mat.name.toLowerCase().includes('body') || mat.name.toLowerCase().includes('head') || mat.name.toLowerCase().includes('arm') || mat.name.toLowerCase().includes('leg') || mat.name.toLowerCase().includes('dark') || mat.name.toLowerCase().includes('shadow') || mat.name.toLowerCase().includes('tan'))) {
+                                        mat.color.setRGB(1.0, 1.0, 0.98);
+                                    }
+                                });
+                            } else {
+                                if (child.material.name && (child.material.name.toLowerCase().includes('skin') || child.material.name.toLowerCase().includes('face') || child.material.name.toLowerCase().includes('body') || child.material.name.toLowerCase().includes('head') || child.material.name.toLowerCase().includes('arm') || child.material.name.toLowerCase().includes('leg') || child.material.name.toLowerCase().includes('dark') || child.material.name.toLowerCase().includes('shadow') || child.material.name.toLowerCase().includes('tan'))) {
+                                    child.material.color.setRGB(1.0, 1.0, 0.98);
+                                }
+                            }
+                        }
+                    });
+                    
+                    scene.add(model);
+                    
+                    // Animation loop
+                    function animate() {
+                        requestAnimationFrame(animate);
+                        model.rotation.y += 0.01;
+                        renderer.render(scene, camera);
+                    }
+                    animate();
+                },
+                function(progress) {
+                    const percent = Math.round((progress.loaded / progress.total) * 100);
+                    addStatus(`Loading progress: ${percent}%`);
+                },
+                function(error) {
+                    addStatus(`ERROR loading model: ${error.message || error}`, 'error');
+                    console.error('Detailed error:', error);
+                }
+            );
+        }
+        
+        // Start test when page loads
+        window.addEventListener('load', function() {
+            setTimeout(testModel, 500);
+        });
+    </script>
+</body>
+</html>

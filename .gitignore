@@ -1,0 +1,22 @@
+# Server-side files (not needed for GitHub Pages)
+server.js
+package.json
+package-lock.json
+.env
+.env.example
+SETUP.md
+node_modules/
+uploads/
+
+# Large 3D model files
+*.glb
+*.gltf
+
+# Development files
+debug-styles.html
+test-*.html
+
+# OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini

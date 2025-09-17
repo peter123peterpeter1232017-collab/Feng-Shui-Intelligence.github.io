@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Upload Photo - Feng Shui Intelligence (Updated 2025-01-12 01:30)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Additional styles specific to upload page */
+        .upload-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .upload-area {
+            border: 2px dashed #00BCD4;
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+            background-color: #E1F5FE;
+            cursor: pointer;
+        }
+        
+        .upload-area:hover, .upload-area.dragover {
+            background-color: #B3E5FC;
+        }
+        
+        .upload-area img {
+            width: 80px;
+            margin-bottom: 1rem;
+        }
+        
+        .upload-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .upload-buttons .btn {
+            min-width: 140px;
+        }
+        
+        .btn-secondary {
+            background-color: #FF9800;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #F57C00;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary i {
+            margin-right: 0.5rem;
+        }
+        
+        .upload-instructions {
+            margin-bottom: 2rem;
+        }
+        
+        .upload-instructions ol {
+            text-align: left;
+            padding-left: 1.5rem;
+        }
+        
+        .upload-instructions li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .preview-container {
+            display: none;
+            margin-top: 2rem;
+        }
+        
+        .preview-image {
+            max-width: 100%;
+            max-height: 400px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .room-type-selection {
+            margin: 2rem 0;
+        }
+        
+        .room-type-selection select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Raleway', sans-serif;
+            font-size: 1rem;
+        }
+        
+        .analysis-progress {
+            display: none;
+            margin: 2rem 0;
+        }
+        
+        .progress-bar {
+            height: 10px;
+            background-color: #E1F5FE;
+            border-radius: 5px;
+            margin-top: 1rem;
+            overflow: hidden;
+        }
+        
+        .progress-bar-fill {
+            height: 100%;
+            width: 0%;
+            background-color: #00BCD4;
+            transition: width 0.5s ease;
+        }
+        
+        .results-container {
+            display: none;
+            margin-top: 2rem;
+            padding: 2rem;
+            background-color: #F9FBE7;
+            border-radius: 8px;
+            border-left: 4px solid #8BC34A;
+        }
+        
+        .results-heading {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .results-heading i {
+            font-size: 1.5rem;
+            color: #8BC34A;
+            margin-right: 0.5rem;
+        }
+        
+        .feng-shui-score {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .score-meter {
+            width: 70%;
+            height: 20px;
+            background-color: #E0E0E0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .score-fill {
+            height: 100%;
+            width: 75%;
+            background: linear-gradient(to right, #FF9800, #8BC34A);
+        }
+        
+        .recommendations {
+            margin-top: 2rem;
+        }
+        
+        .recommendation-item {
+            display: flex;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #E0E0E0;
+        }
+        
+        .recommendation-item:last-child {
+            border-bottom: none;
+        }
+        
+        .recommendation-icon {
+            flex: 0 0 40px;
+            margin-right: 1rem;
+            color: #5D4037;
+        }
+        
+        .recommendation-text {
+            flex: 1;
+        }
+        
+        .recommendation-text h4 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            color: #5D4037;
+        }
+        
+        .recommendation-text p {
+            margin: 0;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .upload-section {
+                padding: 2rem 0;
+            }
+            
+            .upload-container {
+                padding: 1.5rem;
+            }
+            
+            .upload-area {
+                padding: 2rem 1rem;
+            }
+            
+            .upload-buttons {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+            
+            .upload-buttons .btn {
+                min-width: 100%;
+                padding: 1rem;
+                font-size: 1rem;
+            }
+            
+            .btn-secondary {
+                padding: 1rem 1.5rem;
+                font-size: 1rem;
+            }
+            
+            .btn-large {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+            }
+            
+            /* Optimize camera button for mobile */
+            .btn-secondary i {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="images/Feng Shui Intelligence (2).jpg" alt="Feng Shui Intelligence Logo">
+                <h1>Feng Shui Intelligence</h1>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="introduction.html">About Feng Shui</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Banner -->
+    <section class="page-banner">
+        <div class="container">
+        </div>
+    </section>
+
+    <!-- Upload Section -->
+    <section class="section">
+        <div class="container">
+            <div class="upload-container">
+                <h2>Upload Your Interior Photo</h2>
+                <p>Our AI will analyze your space and provide feng shui recommendations</p>
+                
+                <div class="upload-instructions">
+                    <h3>For best results:</h3>
+                    <ol>
+                        <li>Take photos in natural daylight if possible</li>
+                        <li>Capture the entire room from different angles</li>
+                        <li>Make sure the photo is clear and well-lit</li>
+                        <li>Include major furniture and decor elements</li>
+                    </ol>
+                </div>
+                
+                <div class="upload-area" id="uploadArea">
+                    <h3>Drag & Drop Your Photo Here</h3>
+                    <p>or</p>
+                    <div class="upload-buttons">
+                        <button class="btn btn-primary" id="browseButton">Browse Files</button>
+                        <button class="btn btn-secondary" id="cameraButton">
+                            <i class="fas fa-camera"></i> Take Photo
+                        </button>
+                    </div>
+                    <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                    <input type="file" id="cameraInput" accept="image/*" capture="environment" style="display: none;">
+                </div>
+                
+                <div class="preview-container" id="previewContainer">
+                    <h3>Photo Preview</h3>
+                    <img src="" alt="Preview" class="preview-image" id="previewImage">
+                    <button class="btn btn-outline" id="removeButton">Remove</button>
+                </div>
+                
+                <div class="room-type-selection" id="roomTypeSelection">
+                    <h3>Select Room Type</h3>
+                    <select id="roomType">
+                        <option value="">-- Select Room Type --</option>
+                        <option value="living">Living Room</option>
+                        <option value="bedroom">Bedroom</option>
+                        <option value="kitchen">Kitchen</option>
+                        <option value="dining">Dining Room</option>
+                        <option value="office">Home Office</option>
+                        <option value="bathroom">Bathroom</option>
+                        <option value="entrance">Entrance/Foyer</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <button class="btn btn-primary btn-large" id="analyzeButton" disabled>Analyze Photo</button>
+                
+                <div class="analysis-progress" id="analysisProgress">
+                    <h3>Analyzing Your Photo...</h3>
+                    <p>Our AI is examining the feng shui elements in your space</p>
+                    <div class="progress-bar">
+                        <div class="progress-bar-fill" id="progressBarFill"></div>
+                    </div>
+                </div>
+                
+                <div class="results-container hidden" id="resultsContainer">
+                    <div class="results-heading">
+                        <h3>Analysis Complete</h3>
+                    </div>
+                    
+                    <div class="feng-shui-score">
+                        <div>
+                            <h4>Your Feng Shui Score</h4>
+                            <p>Analyzing...</p>
+                        </div>
+                        <div class="score-meter">
+                            <div class="score-fill"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="element-balance">
+                        <h4>Element Balance</h4>
+                        <p>Analyzing element balance...</p>
+                    </div>
+                    
+                    <div class="recommendations">
+                        <h3>Recommendations</h3>
+                        <p>Generating personalized recommendations...</p>
+                    </div>
+                    
+                    <div class="cta-buttons">
+                        <button class="btn btn-primary">Download Full Report</button>
+                        <button class="btn btn-outline">Book Consultation</button>
+                        <button class="btn btn-secondary" id="testDisplayButton">Test Display</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <p>Harmonizing your space with AI-powered feng shui analysis</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-links-column">
+                        <h3>Pages</h3>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="introduction.html">Introduction</a></li>
+                            <li><a href="pricing.html">Pricing</a></li>
+                            <li><a href="upload.html">Upload Photo</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h3>Legal</h3>
+                        <ul>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms of Service</a></li>
+                            <li><a href="#">Cookie Policy</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h3>Contact</h3>
+                        <ul>
+                            <li><a href="mailto:info@fengshui-ai.com">info@fengshui-ai.com</a></li>
+                            <li><a href="tel:+1234567890">+1 (234) 567-890</a></li>
+                            <li><a href="#">Contact Form</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Feng Shui Intelligence. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Upload functionality
+        const uploadArea = document.getElementById('uploadArea');
+        const fileInput = document.getElementById('fileInput');
+        const cameraInput = document.getElementById('cameraInput');
+        const browseButton = document.getElementById('browseButton');
+        const cameraButton = document.getElementById('cameraButton');
+        const previewContainer = document.getElementById('previewContainer');
+        const previewImage = document.getElementById('previewImage');
+        const removeButton = document.getElementById('removeButton');
+        const analyzeButton = document.getElementById('analyzeButton');
+        const roomTypeSelect = document.getElementById('roomType');
+        const analysisProgress = document.getElementById('analysisProgress');
+        const progressBarFill = document.getElementById('progressBarFill');
+        const resultsContainer = document.getElementById('resultsContainer');
+        
+        // Browse button click
+        browseButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            fileInput.click();
+        });
+        
+        // Camera button click
+        cameraButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            // Check if device supports camera
+            if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+                cameraInput.click();
+            } else {
+                alert('Camera access is not supported on this device or browser.');
+            }
+        });
+        
+        // File input change
+        fileInput.addEventListener('change', handleFileSelect);
+        
+        // Camera input change
+        cameraInput.addEventListener('change', handleFileSelect);
+        
+        // Drag and drop events
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.classList.add('dragover');
+        });
+        
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.classList.remove('dragover');
+        });
+        
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('dragover');
+            
+            if (e.dataTransfer.files.length) {
+                fileInput.files = e.dataTransfer.files;
+                handleFileSelect(e);
+            }
+        });
+        
+        // Remove button click
+        removeButton.addEventListener('click', () => {
+            fileInput.value = '';
+            cameraInput.value = '';
+            previewContainer.style.display = 'none';
+            uploadArea.style.display = 'block';
+            analyzeButton.disabled = true;
+        });
+        
+        // Room type selection change
+        roomTypeSelect.addEventListener('change', () => {
+            checkAnalyzeButtonState();
+        });
+        
+        // Test display button handler
+        const testDisplayButton = document.getElementById('testDisplayButton');
+        if (testDisplayButton) {
+            testDisplayButton.addEventListener('click', () => {
+                console.log('=== TEST DISPLAY BUTTON CLICKED ===');
+                
+                // Test data
+                const testAnalysis = {
+                    score: 85,
+                    scoreDescription: "Excellent",
+                    elementBalance: {
+                        description: "Test element balance description - this is a test to see if the display works.",
+                        elements: {
+                            wood: 30,
+                            fire: 20,
+                            earth: 25,
+                            metal: 15,
+                            water: 10
+                        }
+                    },
+                    energyFlow: {
+                        description: "Test energy flow description",
+                        rating: "Excellent"
+                    },
+                    recommendations: [
+                        {
+                            category: "Test Category 1",
+                            suggestion: "This is a test recommendation to verify the display functionality.",
+                            priority: "High",
+                            impact: "Test Impact"
+                        },
+                        {
+                            category: "Test Category 2",
+                            suggestion: "This is another test recommendation.",
+                            priority: "Medium",
+                            impact: "Another Test Impact"
+                        }
+                    ],
+                    strengths: ["Test strength 1", "Test strength 2"],
+                    concerns: ["Test concern 1", "Test concern 2"]
+                };
+                
+                console.log('Test analysis data:', testAnalysis);
+                
+                // Hide progress and show results
+                const analysisProgress = document.getElementById('analysisProgress');
+                const resultsContainer = document.getElementById('resultsContainer');
+                
+                if (analysisProgress) {
+                    analysisProgress.style.display = 'none';
+                    console.log('Analysis progress hidden');
+                }
+                
+                // Call updateResultsDisplay with test data
+                try {
+                    updateResultsDisplay(testAnalysis);
+                    console.log('updateResultsDisplay called successfully with test data');
+                    
+                    // Show results container
+                     if (resultsContainer) {
+                         resultsContainer.classList.remove('hidden');
+                         resultsContainer.style.display = 'block';
+                         resultsContainer.style.visibility = 'visible';
+                         resultsContainer.style.opacity = '1';
+                         console.log('Results container shown with forced styles');
+                         console.log('Results container classes:', resultsContainer.className);
+                         console.log('Results container computed display:', window.getComputedStyle(resultsContainer).display);
+                     }
+                } catch (error) {
+                    console.error('Error in test display:', error);
+                }
+            });
+        }
+        
+        // Test function for debugging
+        // Test function removed to avoid confusion with real analysis
+        
+        // Test button listener removed
+        
+        // Analyze button click (modified for static hosting)
+        analyzeButton.addEventListener('click', async () => {
+            console.log('Analyze button clicked!');
+            console.log('File selected:', fileInput.files[0] ? fileInput.files[0].name : 'none');
+            console.log('Room type selected:', roomTypeSelect.value);
+            
+            if (!fileInput.files[0] || !roomTypeSelect.value) {
+                alert('Please select a photo and room type before analyzing.');
+                return;
+            }
+            
+            console.log('Starting analysis process...');
+            
+            // Hide upload area and preview
+            uploadArea.style.display = 'none';
+            previewContainer.style.display = 'none';
+            
+            // Show progress
+            analysisProgress.style.display = 'block';
+            
+            // Start progress animation
+            let progress = 0;
+            const progressInterval = setInterval(() => {
+                progress += 5;
+                if (progress <= 100) {
+                    progressBarFill.style.width = `${progress}%`;
+                }
+            }, 150);
+            
+            // Simulate analysis delay
+            await new Promise(resolve => setTimeout(resolve, 3000));
+            
+            // Complete progress
+            clearInterval(progressInterval);
+            progressBarFill.style.width = '100%';
+            
+            // Generate demo analysis based on room type
+            const analysis = generateDemoAnalysis(roomTypeSelect.value);
+            
+            // Hide progress and show results
+            setTimeout(() => {
+                try {
+                    updateResultsDisplay(analysis);
+                    console.log('updateResultsDisplay completed successfully');
+                    
+                    // Force show results container
+                    const resultsContainer = document.querySelector('#resultsContainer');
+                    if (resultsContainer) {
+                        resultsContainer.classList.remove('hidden');
+                        resultsContainer.style.display = 'block';
+                        resultsContainer.style.visibility = 'visible';
+                        resultsContainer.style.opacity = '1';
+                        console.log('Results container forced visible with inline styles');
+                    }
+                } catch (error) {
+                    console.error('Error in updateResultsDisplay:', error);
+                }
+                
+                console.log('Hiding analysis progress...');
+                analysisProgress.style.display = 'none';
+            }, 500);
+        });
+        
+        // Handle file select
+        function handleFileSelect(e) {
+            let file;
+            
+            // Check which input triggered the event
+            if (e.target.id === 'cameraInput') {
+                file = cameraInput.files[0];
+                // Also set the file to the main fileInput for analysis
+                if (file) {
+                    const dt = new DataTransfer();
+                    dt.items.add(file);
+                    fileInput.files = dt.files;
+                }
+            } else {
+                file = fileInput.files[0];
+            }
+            
+            if (file && file.type.match('image.*')) {
+                const reader = new FileReader();
+                
+                reader.onload = (e) => {
+                    previewImage.src = e.target.result;
+                    uploadArea.style.display = 'none';
+                    previewContainer.style.display = 'block';
+                    checkAnalyzeButtonState();
+                };
+                
+                reader.readAsDataURL(file);
+            }
+        }
+        
+        // Check if analyze button should be enabled
+        function checkAnalyzeButtonState() {
+            if (fileInput.files.length > 0 && roomTypeSelect.value !== '') {
+                analyzeButton.disabled = false;
+            } else {
+                analyzeButton.disabled = true;
+            }
+        }
+        
+        // Update results display with ChatGPT analysis
+        function updateResultsDisplay(analysis) {
+            console.log('=== UPDATE RESULTS DISPLAY CALLED ===');
+            console.log('Function called with analysis:', analysis);
+            console.log('Analysis type:', typeof analysis);
+            console.log('Analysis is null/undefined:', analysis == null);
+            
+            if (!analysis) {
+                console.error('updateResultsDisplay called with null/undefined analysis!');
+                return;
+            }
+            
+            // Debug: Log what we're trying to update
+            console.log('Updating results with:', analysis);
+            console.log('Results container exists:', !!document.querySelector('#resultsContainer'));
+            console.log('All required elements check:');
+            console.log('- Score element:', !!document.querySelector('.feng-shui-score div p'));
+            console.log('- Element balance element:', !!document.querySelector('.element-balance p'));
+            console.log('- Recommendations container:', !!document.querySelector('.recommendations'));
+            
+            // Update score
+            const scoreElement = document.querySelector('.feng-shui-score div p');
+            console.log('Score element found:', scoreElement);
+            console.log('Score element current text:', scoreElement ? scoreElement.textContent : 'null');
+            console.log('Analysis object:', analysis);
+            console.log('Analysis score:', analysis.score);
+            console.log('Analysis scoreDescription:', analysis.scoreDescription);
+            
+            if (scoreElement && analysis.score) {
+                const newScore = `${analysis.score}/100 - ${analysis.scoreDescription || 'Unknown'}`;
+                console.log('Setting score to:', newScore);
+                scoreElement.textContent = newScore;
+                console.log('Score element text after update:', scoreElement.textContent);
+            } else {
+                console.log('Score update failed - element:', !!scoreElement, 'score:', analysis.score);
+            }
+            
+            // Update score meter
+            const scoreFill = document.querySelector('.score-fill');
+            if (scoreFill && analysis.score) {
+                scoreFill.style.width = `${analysis.score}%`;
+                console.log('Score meter updated to:', analysis.score + '%');
+            }
+            
+            // Update element balance
+            const elementBalanceElement = document.querySelector('.element-balance p');
+            console.log('Element balance element found:', elementBalanceElement);
+            if (elementBalanceElement && analysis.elementBalance) {
+                const newElementText = analysis.elementBalance.description || 'Element balance analysis complete.';
+                console.log('Setting element balance to:', newElementText);
+                elementBalanceElement.textContent = newElementText;
+            }
+            
+            // Update recommendations
+            const recommendationsContainer = document.querySelector('.recommendations');
+            console.log('Recommendations container found:', recommendationsContainer);
+            console.log('Analysis recommendations:', analysis.recommendations);
+            
+            if (recommendationsContainer && analysis.recommendations) {
+                // Clear existing recommendations except the title
+                const title = recommendationsContainer.querySelector('h3');
+                recommendationsContainer.innerHTML = '';
+                if (title) recommendationsContainer.appendChild(title);
+                
+                console.log('Adding', analysis.recommendations.length, 'recommendations');
+                
+                // Add new recommendations
+                analysis.recommendations.forEach((rec, index) => {
+                    console.log(`Adding recommendation ${index + 1}:`, rec);
+                    const recElement = document.createElement('div');
+                    recElement.className = 'recommendation-item';
+                    recElement.innerHTML = `
+                        <div class="recommendation-header">
+                            <h4>${rec.category}</h4>
+                            <span class="priority priority-${rec.priority.toLowerCase()}">${rec.priority}</span>
+                        </div>
+                        <p>${rec.suggestion}</p>
+                        <div class="recommendation-impact">
+                            <strong>Impact:</strong> ${rec.impact}
+                        </div>
+                    `;
+                    recommendationsContainer.appendChild(recElement);
+                });
+                
+                console.log('All recommendations added successfully');
+            } else {
+                console.log('Recommendations update failed - container:', !!recommendationsContainer, 'recommendations:', !!analysis.recommendations);
+            }
+            
+            // Update strengths if available
+            if (analysis.strengths) {
+                let strengthsContainer = document.querySelector('.strengths-container');
+                if (!strengthsContainer) {
+                    strengthsContainer = document.createElement('div');
+                    strengthsContainer.className = 'strengths-container';
+                    strengthsContainer.innerHTML = '<h4>Strengths</h4><ul class="strengths-list"></ul>';
+                    recommendationsContainer.parentNode.appendChild(strengthsContainer);
+                }
+                
+                const strengthsList = strengthsContainer.querySelector('.strengths-list');
+                strengthsList.innerHTML = '';
+                analysis.strengths.forEach(strength => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `${strength}`;
+                    strengthsList.appendChild(li);
+                });
+            }
+            
+            // Update concerns if available
+            if (analysis.concerns) {
+                let concernsContainer = document.querySelector('.concerns-container');
+                if (!concernsContainer) {
+                    concernsContainer = document.createElement('div');
+                    concernsContainer.className = 'concerns-container';
+                    concernsContainer.innerHTML = '<h4>Areas for Improvement</h4><ul class="concerns-list"></ul>';
+                    recommendationsContainer.parentNode.appendChild(concernsContainer);
+                }
+                
+                const concernsList = concernsContainer.querySelector('.concerns-list');
+                concernsList.innerHTML = '';
+                analysis.concerns.forEach(concern => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `${concern}`;
+                    concernsList.appendChild(li);
+                });
+            }
+            
+            // Show results container after updating all content
+            console.log('Showing results container');
+            const resultsContainer = document.querySelector('#resultsContainer');
+            if (resultsContainer) {
+                resultsContainer.classList.remove('hidden');
+                console.log('Results container display set to visible');
+                
+                // Scroll to results
+                resultsContainer.scrollIntoView({ behavior: 'smooth' });
+                console.log('Scrolled to results container');
+            } else {
+                console.error('Results container not found!');
+            }
+        }
+    </script>
+
+    <!-- AI Chat Box -->
+    <div class="ai-chat-container">
+        <!-- Chat Toggle Button -->
+        <button class="chat-toggle-btn" id="chatToggleBtn">
+            <img src="images/OLDMAN.png" alt="Feng Shui AI Master" class="chat-master-icon">
+        </button>
+        
+        <!-- Chat Window -->
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <div class="chat-title">
+                    <img src="images/feng-shui-ai-master.svg" alt="Feng Shui Master" class="chat-header-icon">
+                    <span>Feng Shui Master</span>
+                </div>
+                <button class="chat-close-btn" id="chatCloseBtn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="chat-messages" id="chatMessages">
+                <div class="message ai-message">
+                    <div class="message-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="message-content">
+                        <p>Hello! I'm your Feng Shui AI assistant. How can I help you create harmony in your space today?</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chat-input-container">
+                <input type="text" class="chat-input" id="chatInput" placeholder="Ask about feng shui principles...">
+                <button class="chat-send-btn" id="chatSendBtn">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+
+        // Photo analysis functionality (modified for static hosting)
+        async function analyzePhoto(file, roomType) {
+            const loadingDiv = document.getElementById('loading');
+            const resultsDiv = document.getElementById('results');
+            
+            // Show loading
+            loadingDiv.style.display = 'block';
+            resultsDiv.style.display = 'none';
+            
+            // Simulate API call delay
+            await new Promise(resolve => setTimeout(resolve, 3000));
+            
+            // Hide loading
+            loadingDiv.style.display = 'none';
+            
+            // Show demo results (since we can't use OpenAI API in static hosting)
+            const demoAnalysis = generateDemoAnalysis(roomType);
+            displayResults(demoAnalysis);
+        }
+        
+        // Function to generate demo analysis results for static hosting
+        function generateDemoAnalysis(roomType) {
+            const analyses = {
+                living: {
+                    score: 75,
+                    scoreDescription: "Good",
+                    elementBalance: {
+                        description: "Your living room shows good balance with strong earth elements from furniture and adequate wood elements. Consider adding more water features for better flow."
+                    },
+                    recommendations: [
+                        {
+                            category: "Furniture Arrangement",
+                            suggestion: "Consider adding a mirror on the east wall to enhance natural light flow and expand the space energetically.",
+                            priority: "Medium",
+                            impact: "Improved light and energy circulation"
+                        },
+                        {
+                            category: "Element Balance",
+                            suggestion: "Add some green plants near the window to improve wood element balance and air quality.",
+                            priority: "High",
+                            impact: "Enhanced vitality and growth energy"
+                        },
+                        {
+                            category: "Energy Flow",
+                            suggestion: "The coffee table could be moved slightly to improve chi circulation throughout the room.",
+                            priority: "Low",
+                            impact: "Better energy movement"
+                        }
+                    ],
+                    strengths: ["Good conversation area setup", "Natural light utilization", "Balanced color scheme"],
+                    concerns: ["Limited water element presence", "Potential energy blockage near entrance"]
+                },
+                bedroom: {
+                    score: 82,
+                    scoreDescription: "Excellent",
+                    elementBalance: {
+                        description: "Your bedroom demonstrates excellent yin energy for rest with good earth and metal element balance. The positioning supports peaceful sleep."
+                    },
+                    recommendations: [
+                        {
+                            category: "Sleep Quality",
+                            suggestion: "Bed position is excellent for restful sleep. Consider adding blackout curtains for better yin energy.",
+                            priority: "Medium",
+                            impact: "Improved sleep quality and energy restoration"
+                        },
+                        {
+                            category: "Technology",
+                            suggestion: "Remove electronics from bedside tables for better sleep quality and reduced electromagnetic interference.",
+                            priority: "High",
+                            impact: "Better sleep and reduced stress"
+                        },
+                        {
+                            category: "Air Quality",
+                            suggestion: "Add a small plant for air purification and wood element enhancement.",
+                            priority: "Low",
+                            impact: "Cleaner air and natural energy"
+                        }
+                    ],
+                    strengths: ["Optimal bed placement", "Good color harmony", "Clutter-free environment"],
+                    concerns: ["Electronic devices present", "Limited natural elements"]
+                },
+                kitchen: {
+                    score: 68,
+                    scoreDescription: "Fair",
+                    elementBalance: {
+                        description: "Your kitchen shows strong fire and metal elements but needs more wood element balance. The energy flow could be improved with better organization."
+                    },
+                    recommendations: [
+                        {
+                            category: "Element Balance",
+                            suggestion: "Ensure stove and sink are not directly opposite each other to avoid fire-water conflict.",
+                            priority: "High",
+                            impact: "Reduced elemental conflict and better harmony"
+                        },
+                        {
+                            category: "Natural Elements",
+                            suggestion: "Add wooden elements like cutting boards or herb plants to balance the metal and fire energies.",
+                            priority: "Medium",
+                            impact: "Better elemental harmony"
+                        },
+                        {
+                            category: "Organization",
+                            suggestion: "Keep countertops clutter-free for better energy flow and functionality.",
+                            priority: "High",
+                            impact: "Improved energy circulation and efficiency"
+                        }
+                    ],
+                    strengths: ["Good lighting", "Functional layout", "Modern appliances"],
+                    concerns: ["Fire-water element conflict", "Limited wood elements", "Clutter accumulation"]
+                },
+                office: {
+                    score: 78,
+                    scoreDescription: "Good",
+                    elementBalance: {
+                        description: "Your office space supports productivity with good metal and earth elements. Adding water features could enhance wealth and career energy."
+                    },
+                    recommendations: [
+                        {
+                            category: "Productivity",
+                            suggestion: "Desk position supports productivity and focus. Ensure you have a solid wall behind your chair for support.",
+                            priority: "Medium",
+                            impact: "Enhanced focus and career stability"
+                        },
+                        {
+                            category: "Wealth Energy",
+                            suggestion: "Add a small water feature or blue elements in the wealth corner for career enhancement.",
+                            priority: "Medium",
+                            impact: "Improved career prospects and financial flow"
+                        },
+                        {
+                            category: "Mental Clarity",
+                            suggestion: "Ensure good lighting to support mental clarity and reduce eye strain.",
+                            priority: "High",
+                            impact: "Better focus and reduced fatigue"
+                        }
+                    ],
+                    strengths: ["Good desk positioning", "Organized workspace", "Adequate storage"],
+                    concerns: ["Limited water elements", "Potential glare issues", "Need for more plants"]
+                },
+                dining: {
+                    score: 72,
+                    scoreDescription: "Good",
+                    elementBalance: {
+                        description: "Your dining room creates a welcoming atmosphere for family gatherings with balanced earth and wood elements."
+                    },
+                    recommendations: [
+                        {
+                            category: "Family Harmony",
+                            suggestion: "Round or oval tables promote better conversation and energy flow than sharp-cornered tables.",
+                            priority: "Medium",
+                            impact: "Enhanced family communication"
+                        },
+                        {
+                            category: "Lighting",
+                            suggestion: "Add warm lighting options for different dining moods and occasions.",
+                            priority: "Low",
+                            impact: "Better ambiance and energy"
+                        }
+                    ],
+                    strengths: ["Good gathering space", "Natural materials", "Comfortable seating"],
+                    concerns: ["Sharp table corners", "Limited lighting options"]
+                },
+                bathroom: {
+                    score: 65,
+                    scoreDescription: "Fair",
+                    elementBalance: {
+                        description: "Bathrooms naturally have strong water energy. Balance this with earth and wood elements to prevent energy drain."
+                    },
+                    recommendations: [
+                        {
+                            category: "Energy Conservation",
+                            suggestion: "Keep toilet lid closed and bathroom door shut to prevent energy drain from the home.",
+                            priority: "High",
+                            impact: "Prevents wealth and energy loss"
+                        },
+                        {
+                            category: "Element Balance",
+                            suggestion: "Add plants or earth-tone accessories to balance the strong water element.",
+                            priority: "Medium",
+                            impact: "Better elemental harmony"
+                        }
+                    ],
+                    strengths: ["Good ventilation", "Clean and organized"],
+                    concerns: ["Strong water element", "Potential energy drain", "Limited natural light"]
+                },
+                entrance: {
+                    score: 80,
+                    scoreDescription: "Very Good",
+                    elementBalance: {
+                        description: "Your entrance creates a welcoming first impression and allows good energy flow into the home."
+                    },
+                    recommendations: [
+                        {
+                            category: "First Impressions",
+                            suggestion: "Keep the entrance well-lit and clutter-free to welcome positive energy.",
+                            priority: "High",
+                            impact: "Better energy entry and first impressions"
+                        },
+                        {
+                            category: "Protection",
+                            suggestion: "Consider adding a small mirror or protective symbol to deflect negative energy.",
+                            priority: "Low",
+                            impact: "Enhanced protection and positive energy"
+                        }
+                    ],
+                    strengths: ["Clear pathway", "Good lighting", "Welcoming atmosphere"],
+                    concerns: ["Potential clutter accumulation", "Need for protective elements"]
+                },
+                other: {
+                    score: 70,
+                    scoreDescription: "Good",
+                    elementBalance: {
+                        description: "This space shows potential for good feng shui with proper attention to element balance and energy flow."
+                    },
+                    recommendations: [
+                        {
+                            category: "General Balance",
+                            suggestion: "Focus on balancing the five elements (wood, fire, earth, metal, water) throughout the space.",
+                            priority: "Medium",
+                            impact: "Overall harmony and balance"
+                        },
+                        {
+                            category: "Energy Flow",
+                            suggestion: "Ensure clear pathways and remove any obstacles that might block energy flow.",
+                            priority: "High",
+                            impact: "Improved energy circulation"
+                        }
+                    ],
+                    strengths: ["Flexible space usage", "Good potential"],
+                    concerns: ["Needs specific analysis", "General recommendations only"]
+                }
+            };
+            
+            return analyses[roomType] || analyses.other;
+        }

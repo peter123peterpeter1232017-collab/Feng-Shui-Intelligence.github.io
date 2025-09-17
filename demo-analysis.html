@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatGPT Photo Analysis Demo - Feng Shui Intelligence</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .demo-notice {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+        }
+        
+        .demo-notice h3 {
+            margin: 0 0 0.5rem 0;
+            color: white;
+        }
+        
+        .demo-notice p {
+            margin: 0;
+            opacity: 0.9;
+        }
+        
+        .chatgpt-badge {
+            display: inline-flex;
+            align-items: center;
+            background: #10a37f;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .chatgpt-badge i {
+            margin-right: 0.5rem;
+        }
+        
+        .analysis-type {
+            background: #f0f8ff;
+            border: 2px solid #00BCD4;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .analysis-type h4 {
+            color: #00BCD4;
+            margin: 0 0 0.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="images/Feng Shui Intelligence (2).jpg" alt="Feng Shui Intelligence Logo">
+                <h1>Feng Shui Intelligence</h1>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="introduction.html">About Feng Shui</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Banner -->
+    <section class="page-banner">
+        <div class="container">
+            <h1>ChatGPT-Powered Analysis Demo</h1>
+            <p>See how our AI analyzes interior photos using ChatGPT Vision</p>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section class="section">
+        <div class="container">
+            <div class="upload-container">
+                <div class="demo-notice">
+                    <h3><i class="fas fa-robot"></i> ChatGPT Integration Demo</h3>
+                    <p>This demonstrates how our real photo analysis works with ChatGPT Vision API</p>
+                </div>
+                
+                <div class="chatgpt-badge">
+                    <i class="fas fa-brain"></i>
+                    Powered by ChatGPT Vision
+                </div>
+                
+                <h2>AI-Powered Feng Shui Analysis</h2>
+                <p>Experience how ChatGPT analyzes your interior photos with professional feng shui expertise</p>
+                
+                <div class="analysis-type">
+                    <h4><i class="fas fa-camera"></i> Sample Analysis: Living Room</h4>
+                    <p>Below is an example of how ChatGPT would analyze a living room photo using feng shui principles</p>
+                </div>
+                
+                <button class="btn btn-primary btn-large" id="startDemo">Start Demo Analysis</button>
+                
+                <div class="analysis-progress" id="analysisProgress" style="display: none;">
+                    <h3>ChatGPT is Analyzing...</h3>
+                    <p>Our AI is examining the feng shui elements in your space using advanced vision recognition</p>
+                    <div class="progress-bar">
+                        <div class="progress-bar-fill" id="progressBarFill"></div>
+                    </div>
+                </div>
+                
+                <div class="results-container" id="resultsContainer" style="display: none;">
+                    <div class="results-heading">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>ChatGPT Analysis Complete</h3>
+                    </div>
+                    
+                    <div class="feng-shui-score">
+                        <div>
+                            <h4>Your Feng Shui Score</h4>
+                            <p id="scoreText">82/100 - Very Good</p>
+                        </div>
+                        <div class="score-meter">
+                            <div class="score-fill" id="scoreFill" style="width: 82%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="element-balance">
+                        <h4>Element Balance Analysis</h4>
+                        <p id="elementText">Your living room demonstrates excellent feng shui principles with strong Wood and Earth elements. The natural lighting and plant placement create positive chi flow, though the Metal element could be enhanced in the northwest corner.</p>
+                    </div>
+                    
+                    <div class="recommendations">
+                        <h3>ChatGPT Recommendations</h3>
+                        <div id="recommendationsList">
+                            <!-- Recommendations will be populated by JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <div class="strengths-container">
+                        <h4>Identified Strengths</h4>
+                        <ul class="strengths-list" id="strengthsList">
+                            <!-- Strengths will be populated by JavaScript -->
+                        </ul>
+                    </div>
+                    
+                    <div class="concerns-container">
+                        <h4>Areas for Improvement</h4>
+                        <ul class="concerns-list" id="concernsList">
+                            <!-- Concerns will be populated by JavaScript -->
+                        </ul>
+                    </div>
+                    
+                    <div style="margin-top: 2rem; padding: 1rem; background: #e8f5e8; border-radius: 8px;">
+                        <h4 style="color: #2e7d32; margin-bottom: 0.5rem;"><i class="fas fa-info-circle"></i> How to Get Real Analysis</h4>
+                        <p style="margin: 0; color: #2e7d32;">To use this feature with your own photos, follow the setup instructions in SETUP.md to configure ChatGPT API integration.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/Feng Shui Intelligence (2).jpg" alt="Feng Shui Intelligence Logo">
+                    <p>Harmonizing your space with AI-powered feng shui analysis</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-links-column">
+                        <h3>Pages</h3>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="introduction.html">Introduction</a></li>
+                            <li><a href="pricing.html">Pricing</a></li>
+                            <li><a href="upload.html">Upload Photo</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h3>Legal</h3>
+                        <ul>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms of Service</a></li>
+                            <li><a href="#">Cookie Policy</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h3>Contact</h3>
+                        <ul>
+                            <li><i class="fas fa-envelope"></i> info@fengshui-ai.com</li>
+                            <li><i class="fas fa-phone"></i> (555) 123-4567</li>
+                            <li><i class="fas fa-map-marker-alt"></i> 123 Harmony Street</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Feng Shui Intelligence. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Demo data simulating ChatGPT analysis
+        const demoAnalysis = {
+            score: 82,
+            scoreDescription: "Very Good",
+            elementBalance: {
+                description: "Your living room demonstrates excellent feng shui principles with strong Wood and Earth elements. The natural lighting and plant placement create positive chi flow, though the Metal element could be enhanced in the northwest corner."
+            },
+            recommendations: [
+                {
+                    category: "Lighting & Energy",
+                    suggestion: "Add a metallic floor lamp or picture frame in the northwest corner to strengthen the Metal element and enhance career prospects.",
+                    priority: "High",
+                    impact: "Career & Success"
+                },
+                {
+                    category: "Furniture Arrangement",
+                    suggestion: "Slightly angle the sofa to create a more commanding position while maintaining the current welcoming energy flow.",
+                    priority: "Medium",
+                    impact: "Security & Comfort"
+                },
+                {
+                    category: "Color Balance",
+                    suggestion: "Introduce subtle blue accents through cushions or artwork to enhance the Water element and promote tranquility.",
+                    priority: "Medium",
+                    impact: "Peace & Relaxation"
+                },
+                {
+                    category: "Natural Elements",
+                    suggestion: "The existing plants are perfectly positioned. Consider adding a small crystal or stone element to ground the space's energy.",
+                    priority: "Low",
+                    impact: "Stability & Grounding"
+                }
+            ],
+            strengths: [
+                "Excellent natural light distribution enhances positive energy",
+                "Well-balanced furniture arrangement promotes good conversation flow",
+                "Strategic plant placement activates the Wood element effectively",
+                "Clean, uncluttered space allows chi to flow freely",
+                "Warm color palette creates welcoming atmosphere"
+            ],
+            concerns: [
+                "Northwest corner lacks Metal element representation",
+                "Water element could be strengthened for better balance",
+                "Consider adding more texture variety for sensory richness"
+            ]
+        };
+
+        // Demo functionality
+        document.getElementById('startDemo').addEventListener('click', function() {
+            // Hide button and show progress
+            this.style.display = 'none';
+            document.getElementById('analysisProgress').style.display = 'block';
+            
+            // Animate progress bar
+            let progress = 0;
+            const progressBar = document.getElementById('progressBarFill');
+            const interval = setInterval(() => {
+                progress += 3;
+                progressBar.style.width = progress + '%';
+                
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    
+                    // Show results after completion
+                    setTimeout(() => {
+                        document.getElementById('analysisProgress').style.display = 'none';
+                        displayResults();
+                        document.getElementById('resultsContainer').style.display = 'block';
+                    }, 1000);
+                }
+            }, 100);
+        });
+        
+        function displayResults() {
+            // Update recommendations
+            const recommendationsList = document.getElementById('recommendationsList');
+            recommendationsList.innerHTML = '';
+            
+            demoAnalysis.recommendations.forEach(rec => {
+                const recElement = document.createElement('div');
+                recElement.className = 'recommendation-item';
+                recElement.innerHTML = `
+                    <div class="recommendation-header">
+                        <h4>${rec.category}</h4>
+                        <span class="priority priority-${rec.priority.toLowerCase()}">${rec.priority}</span>
+                    </div>
+                    <p>${rec.suggestion}</p>
+                    <div class="recommendation-impact">
+                        <strong>Impact:</strong> ${rec.impact}
+                    </div>
+                `;
+                recommendationsList.appendChild(recElement);
+            });
+            
+            // Update strengths
+            const strengthsList = document.getElementById('strengthsList');
+            strengthsList.innerHTML = '';
+            demoAnalysis.strengths.forEach(strength => {
+                const li = document.createElement('li');
+                li.innerHTML = `<i class="fas fa-check-circle"></i> ${strength}`;
+                strengthsList.appendChild(li);
+            });
+            
+            // Update concerns
+            const concernsList = document.getElementById('concernsList');
+            concernsList.innerHTML = '';
+            demoAnalysis.concerns.forEach(concern => {
+                const li = document.createElement('li');
+                li.innerHTML = `<i class="fas fa-exclamation-triangle"></i> ${concern}`;
+                concernsList.appendChild(li);
+            });
+        }
+    </script>
+
+    <!-- AI Chat Box -->
+    <div class="ai-chat-container">
+        <!-- Chat Toggle Button -->
+        <button class="chat-toggle-btn" id="chatToggleBtn">
+            <img src="images/OLDMAN.png" alt="Feng Shui AI Master" class="chat-master-icon">
+        </button>
+        
+        <!-- Chat Window -->
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <div class="chat-title">
+                    <img src="images/feng-shui-ai-master.svg" alt="Feng Shui Master" class="chat-header-icon">
+                    <span>Feng Shui Master</span>
+                </div>
+                <button class="chat-close-btn" id="chatCloseBtn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="chat-messages" id="chatMessages">
+                <div class="message ai-message">
+                    <div class="message-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="message-content">
+                        <p>Hello! I'm your Feng Shui AI assistant. How can I help you create harmony in your space today?</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chat-input-container">
+                <input type="text" class="chat-input" id="chatInput" placeholder="Ask about feng shui principles...">
+                <button class="chat-send-btn" id="chatSendBtn">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
