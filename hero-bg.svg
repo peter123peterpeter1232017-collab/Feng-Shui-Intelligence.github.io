@@ -1,0 +1,60 @@
+<svg width="1200" height="600" viewBox="0 0 1200 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background gradient -->
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5D4037" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#00BCD4" stop-opacity="0.6" />
+    </linearGradient>
+    
+    <!-- Pattern for background -->
+    <pattern id="feng-shui-pattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+      <!-- Yin-Yang symbols -->
+      <circle cx="25" cy="25" r="10" fill="#ffffff" fill-opacity="0.05" />
+      <path d="M25,25 a5,5 0 0,1 0,10 a5,5 0 0,0 0,10 a10,10 0 0,0 0,-20z" fill="#000000" fill-opacity="0.05" />
+      <circle cx="25" cy="30" r="2.5" fill="#000000" fill-opacity="0.05" />
+      <circle cx="25" cy="40" r="2.5" fill="#ffffff" fill-opacity="0.05" />
+      
+      <!-- Bagua trigrams -->
+      <g transform="translate(75, 25)">
+        <line x1="-10" y1="-5" x2="10" y2="-5" stroke="#ffffff" stroke-opacity="0.05" stroke-width="2" />
+        <line x1="-10" y1="0" x2="10" y2="0" stroke="#ffffff" stroke-opacity="0.05" stroke-width="2" />
+        <line x1="-10" y1="5" x2="10" y2="5" stroke="#ffffff" stroke-opacity="0.05" stroke-width="2" />
+      </g>
+      
+      <g transform="translate(75, 75)">
+        <line x1="-10" y1="-5" x2="10" y2="-5" stroke="#ffffff" stroke-opacity="0.05" stroke-width="2" />
+        <line x1="-10" y1="0" x2="-5" y2="0" stroke="#ffffff" stroke-opacity="0.05" stroke-width="2" />
+        <line x1="5" y1="0" x2="10" y2="0" stroke="#ffffff" stroke-opacity="0.05" stroke-width="2" />
+        <line x1="-10" y1="5" x2="10" y2="5" stroke="#ffffff" stroke-opacity="0.05" stroke-width="2" />
+      </g>
+      
+      <g transform="translate(25, 75)">
+        <line x1="-10" y1="-5" x2="-5" y2="-5" stroke="#ffffff" stroke-opacity="0.05" stroke-width="2" />
+        <line x1="5" y1="-5" x2="10" y2="-5" stroke="#ffffff" stroke-opacity="0.05" stroke-width="2" />
+        <line x1="-10" y1="0" x2="10" y2="0" stroke="#ffffff" stroke-opacity="0.05" stroke-width="2" />
+        <line x1="-10" y1="5" x2="10" y2="5" stroke="#ffffff" stroke-opacity="0.05" stroke-width="2" />
+      </g>
+    </pattern>
+  </defs>
+  
+  <!-- Main background -->
+  <rect width="1200" height="600" fill="url(#bg-gradient)" />
+  
+  <!-- Pattern overlay -->
+  <rect width="1200" height="600" fill="url(#feng-shui-pattern)" />
+  
+  <!-- Decorative elements -->
+  <g opacity="0.2">
+    <!-- Large Yin-Yang -->
+    <g transform="translate(900, 150)">
+      <circle cx="0" cy="0" r="100" fill="#ffffff" fill-opacity="0.3" />
+      <path d="M0,0 a50,50 0 0,1 0,100 a50,50 0 0,0 0,100 a100,100 0 0,0 0,-200z" fill="#000000" fill-opacity="0.3" />
+      <circle cx="0" cy="50" r="25" fill="#000000" fill-opacity="0.3" />
+      <circle cx="0" cy="150" r="25" fill="#ffffff" fill-opacity="0.3" />
+    </g>
+    
+    <!-- Flowing lines representing chi energy -->
+    <path d="M0,200 C200,150 300,300 500,250 C700,200 900,350 1200,300" stroke="#ffffff" stroke-opacity="0.2" stroke-width="5" fill="none" />
+    <path d="M0,400 C300,450 500,350 700,400 C900,450 1000,350 1200,400" stroke="#ffffff" stroke-opacity="0.2" stroke-width="5" fill="none" />
+  </g>
+</svg>

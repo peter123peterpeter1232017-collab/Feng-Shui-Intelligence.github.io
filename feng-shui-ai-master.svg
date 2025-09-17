@@ -1,0 +1,89 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="95" fill="#2c3e50" stroke="#34495e" stroke-width="3"/>
+  
+  <!-- Clouds -->
+  <g opacity="0.8">
+    <ellipse cx="60" cy="40" rx="15" ry="8" fill="#ecf0f1"/>
+    <ellipse cx="140" cy="35" rx="12" ry="6" fill="#ecf0f1"/>
+    <ellipse cx="170" cy="60" rx="10" ry="5" fill="#ecf0f1"/>
+  </g>
+  
+  <!-- Feng Shui Master -->
+  <g transform="translate(100, 80)">
+    <!-- Head -->
+    <circle cx="0" cy="-20" r="18" fill="#f4d1ae"/>
+    
+    <!-- Hat -->
+    <rect x="-20" y="-40" width="40" height="15" rx="3" fill="#e74c3c"/>
+    <rect x="-15" y="-45" width="30" height="8" rx="2" fill="#c0392b"/>
+    <circle cx="0" cy="-42" r="3" fill="#27ae60"/>
+    
+    <!-- Eyes -->
+    <circle cx="-6" cy="-22" r="2" fill="#2c3e50"/>
+    <circle cx="6" cy="-22" r="2" fill="#2c3e50"/>
+    
+    <!-- Mustache and beard -->
+    <ellipse cx="0" cy="-15" rx="8" ry="3" fill="#ecf0f1"/>
+    <ellipse cx="0" cy="-8" rx="12" ry="8" fill="#ecf0f1"/>
+    
+    <!-- Body/Robe -->
+    <ellipse cx="0" cy="15" rx="25" ry="35" fill="#e74c3c"/>
+    <ellipse cx="0" cy="15" rx="20" ry="30" fill="#c0392b"/>
+    
+    <!-- Arms -->
+    <ellipse cx="-20" cy="5" rx="8" ry="15" fill="#e74c3c" transform="rotate(-20)"/>
+    <ellipse cx="20" cy="5" rx="8" ry="15" fill="#e74c3c" transform="rotate(20)"/>
+    
+    <!-- Fan in hand -->
+    <g transform="translate(25, 0) rotate(15)">
+      <path d="M 0 0 L 15 -10 L 20 -5 L 18 5 L 10 8 Z" fill="#f39c12"/>
+      <path d="M 0 0 L 12 -8 L 16 -3 L 15 3 L 8 6 Z" fill="#e67e22"/>
+      <line x1="0" y1="0" x2="8" y2="-4" stroke="#8b4513" stroke-width="2"/>
+    </g>
+  </g>
+  
+  <!-- AI Robot -->
+  <g transform="translate(100, 150)">
+    <!-- Robot body -->
+    <rect x="-12" y="-15" width="24" height="20" rx="4" fill="#3498db"/>
+    <rect x="-10" y="-13" width="20" height="16" rx="2" fill="#2980b9"/>
+    
+    <!-- Robot head -->
+    <rect x="-8" y="-25" width="16" height="12" rx="3" fill="#3498db"/>
+    
+    <!-- Eyes -->
+    <circle cx="-4" cy="-20" r="2" fill="#1abc9c"/>
+    <circle cx="4" cy="-20" r="2" fill="#1abc9c"/>
+    
+    <!-- Antenna -->
+    <line x1="0" y1="-25" x2="0" y2="-30" stroke="#34495e" stroke-width="2"/>
+    <circle cx="0" cy="-30" r="2" fill="#e74c3c"/>
+    
+    <!-- Arms -->
+    <rect x="-18" y="-10" width="6" height="12" rx="2" fill="#3498db"/>
+    <rect x="12" y="-10" width="6" height="12" rx="2" fill="#3498db"/>
+    
+    <!-- Legs -->
+    <rect x="-8" y="5" width="6" height="10" rx="2" fill="#3498db"/>
+    <rect x="2" y="5" width="6" height="10" rx="2" fill="#3498db"/>
+  </g>
+  
+  <!-- Decorative elements -->
+  <g opacity="0.6">
+    <!-- Yin Yang symbol -->
+    <g transform="translate(40, 120)">
+      <circle cx="0" cy="0" r="8" fill="#2c3e50"/>
+      <path d="M 0 -8 A 4 4 0 0 1 0 0 A 4 4 0 0 0 0 8 A 8 8 0 0 0 0 -8" fill="#ecf0f1"/>
+      <circle cx="0" cy="-4" r="2" fill="#2c3e50"/>
+      <circle cx="0" cy="4" r="2" fill="#ecf0f1"/>
+    </g>
+    
+    <!-- Chinese characters suggestion -->
+    <text x="160" y="40" font-family="serif" font-size="12" fill="#2c3e50" opacity="0.7">風</text>
+    <text x="160" y="55" font-family="serif" font-size="12" fill="#2c3e50" opacity="0.7">水</text>
+  </g>
+  
+  <!-- Text -->
+  <text x="100" y="185" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#2c3e50">FENG SHUI AI</text>
+</svg>

@@ -1,0 +1,15 @@
+<svg width="200" height="60" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+  <!-- Yin-Yang Symbol -->
+  <g transform="translate(30, 30)">
+    <circle cx="0" cy="0" r="25" fill="#5D4037" />
+    <path d="M0,0 a12.5,12.5 0 0,1 0,25 a12.5,12.5 0 0,0 0,25 a25,25 0 0,0 0,-50z" fill="#00BCD4" />
+    <circle cx="0" cy="12.5" r="6.25" fill="#00BCD4" />
+    <circle cx="0" cy="37.5" r="6.25" fill="#5D4037" />
+  </g>
+  
+  <!-- Text: Feng Shui -->
+  <text x="70" y="25" font-family="'Playfair Display', serif" font-size="18" font-weight="bold" fill="#5D4037">Feng Shui</text>
+  
+  <!-- Text: Intelligence -->
+  <text x="70" y="45" font-family="'Raleway', sans-serif" font-size="16" fill="#00BCD4">Intelligence</text>
+</svg>

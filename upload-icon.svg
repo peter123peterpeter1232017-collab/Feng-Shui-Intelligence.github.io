@@ -1,0 +1,10 @@
+<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="50" cy="50" r="45" fill="#E1F5FE" stroke="#00BCD4" stroke-width="2" />
+  
+  <!-- Upload arrow -->
+  <path d="M50,25 L30,45 L42,45 L42,65 L58,65 L58,45 L70,45 Z" fill="#00BCD4" />
+  
+  <!-- Cloud base -->
+  <path d="M25,70 C25,65 30,60 35,60 C35,50 45,45 50,45 C55,45 65,50 65,60 C70,60 75,65 75,70 C75,75 70,80 65,80 L35,80 C30,80 25,75 25,70 Z" fill="#B3E5FC" stroke="#00BCD4" stroke-width="2" />
+</svg>
